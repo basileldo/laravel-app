@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Product::paginate(10);
     }
 
     /**
@@ -35,9 +35,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($sku)
     {
-        //
+        return Product::where('sku', $sku)->firstOrFail();
     }
 
     /**
@@ -63,4 +63,23 @@ class ProductController extends Controller
     {
         //
     }
+
+    /**
+    * Display the specified products
+    */
+    public function list()
+    {
+        $products = Product::all();
+        return view('products.index', compact('products'));
+    }
+
+    /**
+    * Display the specified products details
+    */
+    public function detail($sku)
+    {
+        $product = Product::where('sku', $sku)->firstOrFail();
+        return view('products.detail', compact('product'));
+    }
+
 }
