@@ -45,7 +45,9 @@ npx tailwindcss init
 sh
 
 php artisan make:model Category -mcr
+
 php artisan make:model Product -mcr
+
 Define migrations:
 
 database/migrations/create_categories_table.php:
@@ -77,6 +79,7 @@ Schema::create('products', function (Blueprint $table) {
 sh
 
 php artisan migrate
+
 Set up relationships in models:
 
 Add neccessary controllers and functionality
@@ -88,5 +91,7 @@ Start Lando and run the application:
 sh
 
 lando start
+
 lando ssh
+
 php artisan serve
